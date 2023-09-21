@@ -1,0 +1,13 @@
+{
+  "BooleanTemplateExample": true,
+  "StringTemplateExample": "String",
+  "IntegerTemplateExample": 123,
+  "DoubleTemplateExample": 256.33,
+  "Nested": {
+    "Double": 34234.33
+  },
+  "CustomObject": {
+    "propertyNumber": 1234,
+    "propertyString": "CustomObjectString"
+  }
+}
