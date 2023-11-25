@@ -1,3 +1,67 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA files
+.idea/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# NetBeans files
+nbproject/
+nb-configuration.xml
+
+# Visual Studio Code files
+.vscode/
+
+# Compiled Java bytecode
+*.class
+
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Compiled Ruby files
+*.rbc
+*.gem
+/.config
+/coverage/
+
+# Node.js dependencies
+node_modules/
+
+# Compiled TypeScript
+*.tsbuildinfo
+
+# Compiled Dart
+.dart_tool/
+
+# Maven
+target/
+
+# Gradle
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# macOS files
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
