@@ -34,11 +34,13 @@ public class JsonFileCreator {
 
     }
 
+    // This is the method that is called in the JsonFileCreator class
     public void editWithTemplate(JsonTask runnable){
         runnable.editTemplate(new JsonFileModification(this.jsonObject));
         saveToFile();
     }
 
+    // This is the method that is called in the JsonFileModification class
     public static JsonFileCreator createJsonFile(File file) {
         return new JsonFileCreator(file);
     }
