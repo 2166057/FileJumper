@@ -160,4 +160,20 @@ public class JsonFileModification {
         }
     }
 
+
+    // This is the method that is called in the JsonFileModification class
+    public void setJsonArrayValue(String key, JsonArray value) {
+        jsonObject.add(key, value);
+    }
+
+    // This is the method that is called in the JsonFileModification class
+    public JsonArray getJsonArrayValue(String key, JsonArray defaultValue) {
+        if (jsonObject.has(key)) {
+            return jsonObject.getAsJsonArray(key);
+        } else {
+            setJsonArrayValue(key, defaultValue);
+            return defaultValue;
+        }
+    }
+
 }
