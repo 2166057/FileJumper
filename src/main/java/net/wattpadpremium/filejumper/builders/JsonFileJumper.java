@@ -1,23 +1,21 @@
 package net.wattpadpremium.filejumper.builders;
 
 import com.google.gson.*;
-import net.wattpadpremium.filejumper.JsonFileModification;
-import net.wattpadpremium.filejumper.abstraction.JsonTask;
+import net.wattpadpremium.filejumper.filemodificator.JsonFileModificator;
+import net.wattpadpremium.filejumper.task.JsonJumperTask;
+import net.wattpadpremium.filejumper.utilities.FilePathCreationTool;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-public class JsonFileCreator {
-
+public class JsonFileJumper {
     private JsonObject jsonObject;
-
     private final File file;
-
-    private JsonFileCreator(File file) {
+    public JsonFileJumper(File file) {
         this.file = file;
-        createMissingDirectories();
+        FilePathCreationTool.createMissingFileAndFolders(file);
         try {
             String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
             JsonParser jsonParser = new JsonParser();
@@ -34,18 +32,16 @@ public class JsonFileCreator {
 
     }
 
-    // This is the method that is called in the JsonFileCreator class
-    public void editWithTemplate(JsonTask runnable){
-        runnable.editTemplate(new JsonFileModification(this.jsonObject));
-        saveToFile();
+    public void editWithTemplate(JsonJumperTask runnable){
+        runnable.editTemplate(new JsonFileModificator(this.jsonObject,true));
+        save();
     }
 
-    // This is the method that is called in the JsonFileModification class
-    public static JsonFileCreator createJsonFile(File file) {
-        return new JsonFileCreator(file);
+    public JsonFileModificator getJsonFileModificator() {
+        return new JsonFileModificator(jsonObject,false);
     }
 
-    private void saveToFile() {
+    public void save() {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(jsonObject);
@@ -55,18 +51,4 @@ public class JsonFileCreator {
         }
     }
 
-    private void createMissingDirectories() {
-        if (!file.exists()) {
-            String s = file.getParent();
-            File folders = new File(s);
-            if (!folders.exists()){
-                folders.mkdirs();
-            }
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
 }
