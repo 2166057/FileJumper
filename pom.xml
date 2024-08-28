@@ -20,6 +20,7 @@
             <email>me@wattpadpremium.net</email>
         </developer>
     </developers>
+
     <scm>
         <url>https://github.com/2166057/FileJumper</url>
         <connection>scm:git:https://github.com/2166057/FileJumper.git</connection>
@@ -34,7 +35,7 @@
 
     <groupId>net.wattpadpremium</groupId>
     <artifactId>filejumper</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.3</version>
     <packaging>jar</packaging>
 
     <repositories>
