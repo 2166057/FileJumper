@@ -25,7 +25,7 @@ To use FileJumper in your Maven project, you can add the following dependency to
 <dependency>
     <groupId>com.github.2166057</groupId>
     <artifactId>filejumper</artifactId>
-    <version>2.0.2</version>
+    <version>2.0.3</version>
 </dependency>
 ```
 
