@@ -14,12 +14,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <developers>
-        <developer>
-            <name>Mr.wattpad</name>
-            <email>me@wattpadpremium.net</email>
-        </developer>
-    </developers>
 
     <scm>
         <url>https://github.com/2166057/FileJumper</url>
@@ -33,9 +27,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <groupId>net.wattpadpremium</groupId>
+    <groupId>io.github.2166057</groupId>
     <artifactId>filejumper</artifactId>
-    <version>2.0.3</version>
+    <version>2.1.0</version>
     <packaging>jar</packaging>
 
     <repositories>
@@ -68,8 +62,5 @@
             <url>https://maven.pkg.github.com/2166057/FileJumper</url>
         </repository>
     </distributionManagement>
-
-
-
 
 </project>
