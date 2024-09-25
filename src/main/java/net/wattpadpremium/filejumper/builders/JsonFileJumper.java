@@ -13,6 +13,7 @@ import java.nio.file.Files;
 public class JsonFileJumper {
     private JsonObject jsonObject;
     private final File file;
+
     public JsonFileJumper(File file) {
         this.file = file;
         FilePathCreationTool.createMissingFileAndFolders(file);

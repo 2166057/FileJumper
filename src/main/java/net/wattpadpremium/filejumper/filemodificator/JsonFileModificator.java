@@ -10,6 +10,7 @@ public class JsonFileModificator {
     public JsonFileModificator(JsonObject jsonObject) {
         this(jsonObject, false);
     }
+
     public JsonFileModificator(JsonObject jsonObject, boolean saveDefaultValue) {
         this.jsonObject = jsonObject;
         this.saveDefaultValue = saveDefaultValue;
@@ -19,6 +20,15 @@ public class JsonFileModificator {
         jsonObject.add(key, value);
     }
 
+    public JsonObject asJsonObject(){
+        return jsonObject;
+    }
+
+    public JsonFileModificator getEmbedded(String key, JsonObject defaultValue){
+        return getJsonObject(key, defaultValue);
+    }
+
+    @Deprecated
     public JsonFileModificator getJsonObject(String key, JsonObject defaultValue) {
         if (jsonObject.has(key)) {
             return new JsonFileModificator(jsonObject.getAsJsonObject(key), saveDefaultValue);
