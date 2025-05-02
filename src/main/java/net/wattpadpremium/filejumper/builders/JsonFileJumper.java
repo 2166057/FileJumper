@@ -7,20 +7,24 @@ import net.wattpadpremium.filejumper.utilities.FilePathCreationTool;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 public class JsonFileJumper {
+
     private JsonObject jsonObject;
     private final File file;
+    private final Charset charset;
 
-    public JsonFileJumper(File file) {
+
+    public JsonFileJumper(File file, Charset charset) {
         this.file = file;
+        this.charset = charset;
         FilePathCreationTool.createMissingFileAndFolders(file);
         try {
-            String fileContent = Files.readString(file.toPath(), StandardCharsets.UTF_8);
-            JsonParser jsonParser = new JsonParser();
-            JsonElement jsonElement = jsonParser.parse(fileContent);
+            String fileContent = Files.readString(file.toPath(), charset);
+            JsonElement jsonElement = JsonParser.parseString(fileContent);
             if (jsonElement.isJsonObject()) {
                 jsonObject = jsonElement.getAsJsonObject();
             }
@@ -31,6 +35,10 @@ public class JsonFileJumper {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public JsonFileJumper(File file) {
+        this(file, StandardCharsets.UTF_8);
     }
 
     public void editWithTemplate(JsonJumperTask runnable){
@@ -44,9 +52,10 @@ public class JsonFileJumper {
 
     public void save() {
         try {
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
             String json = gson.toJson(jsonObject);
-            Files.writeString(file.toPath(), json, StandardCharsets.UTF_8);
+
+            Files.writeString(file.toPath(), json, charset);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
